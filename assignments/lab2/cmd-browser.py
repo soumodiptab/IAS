@@ -55,7 +55,7 @@ def start_browser():
     while True:
         TARGET_PORT = HTTP_PORT
         print("------------------------------------------------------------------------------------------")
-        print(' CMD BROWSER | Enter URL | EX: https://iiit.ac.in')
+        print(' CMD BROWSER | Enter URL | EX: https://www.iiit.ac.in')
         print("------------------------------------------------------------------------------------------")
         url = str(input())
         if url == 'exit':
