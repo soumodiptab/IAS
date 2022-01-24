@@ -75,6 +75,7 @@ def start_browser():
         list_resp.pop(0)
         conn.close()
         html_page = ''.join(list_resp)
+        html_page= html_page[:-1].rstrip()
         # if not status_code == '200':
         #     html_page = secure_handler(TARGET_HOST)
         print(html_page)
