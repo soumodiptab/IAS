@@ -106,7 +106,7 @@ def caller_generic():
     function_call = f"{fname}(*{arguments})"
     ret_value = eval(function_call)
     return ret_value'''
-    return out_string
+    return out_string+LINE_END+LINE_END
 
 
 def start(file_name):

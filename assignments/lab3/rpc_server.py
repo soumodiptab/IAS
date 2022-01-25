@@ -6,8 +6,6 @@ PORT = 9000
 SERVER = socket.gethostbyname((socket.gethostname()))
 ADDRESS = (SERVER, PORT)
 MAX_sIZE = 600
-STATUS_CODES = {"SUCCESS": 0, "FAIL": 1}
-
 
 def caller(func_dict):
     fname = list(func_dict.keys())[0]
@@ -15,7 +13,6 @@ def caller(func_dict):
     function_call = f"{fname}(*{arguments})"
     ret_value = eval(function_call)
     return ret_value
-
 
 def rpc_handler(conn):
     function_info = conn.recv(MAX_sIZE).decode()
@@ -26,7 +23,6 @@ def rpc_handler(conn):
     print(f"RPC REPLY:{ret_value}")
     conn.send(str(ret_value).encode())
     conn.close()
-
 
 def start():
     print("RPC SERVER has started")
@@ -42,6 +38,5 @@ def start():
         print("RPC SERVER is closing down")
         server.close()
         exit()
-
 
 start()
