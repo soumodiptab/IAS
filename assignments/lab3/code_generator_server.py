@@ -1,4 +1,4 @@
-from distutils.errors import LibError
+import sys
 import json
 # --Configuration-----------------
 FILE_NAME = 'rpc_server.py'
@@ -99,8 +99,8 @@ def caller_builder(procedures):
     return out_string
 
 
-def start():
-    remote_procedures = json_loader('contract.json')['remote_procedures']
+def start(file_name):
+    remote_procedures = json_loader(file_name)['remote_procedures']
     f = open(FILE_NAME, "w")
     f.write(import_generator())
     f.write(config_generator())
@@ -113,4 +113,6 @@ def start():
     f.close()
 
 
-start()
+if len(sys.argv) != 2:
+    exit()
+start(sys.argv[1])
