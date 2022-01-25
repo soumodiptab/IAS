@@ -26,5 +26,5 @@ def zoo():
 
 
 def boo(par_1:float):
-	return float(rpc_connector('boo',[par_1]))
+	rpc_connector('boo',[par_1])
 

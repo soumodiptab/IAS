@@ -6,20 +6,16 @@ PORT = 9000
 SERVER = socket.gethostbyname((socket.gethostname()))
 ADDRESS = (SERVER, PORT)
 MAX_sIZE = 600
+STATUS_CODES = {"SUCCESS": 0, "FAIL": 1}
+
 
 def caller(func_dict):
-	fname = list(func_dict.keys())[0]
-	arguments = func_dict[fname]
-	if fname == 'foo':
-		return foo(*arguments)
-	elif fname == 'bar':
-		return bar(*arguments)
-	elif fname == 'zoo':
-		return zoo(*arguments)
-	elif fname == 'boo':
-		return boo(*arguments)
-	else:
-		return "Invalid"
+    fname = list(func_dict.keys())[0]
+    arguments = func_dict[fname]
+    function_call = f"{fname}(*{arguments})"
+    ret_value = eval(function_call)
+    return ret_value
+
 
 def rpc_handler(conn):
     function_info = conn.recv(MAX_sIZE).decode()
@@ -31,6 +27,7 @@ def rpc_handler(conn):
     conn.send(str(ret_value).encode())
     conn.close()
 
+
 def start():
     print("RPC SERVER has started")
     server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -39,11 +36,12 @@ def start():
         server.listen()
         while True:
             conn, addr = server.accept()
-            new_thread = threading.Thread(target=rpc_handler, args=(conn, addr))
+            new_thread = threading.Thread(target=rpc_handler, args=(conn,))
             new_thread.start()
     except KeyboardInterrupt:
         print("RPC SERVER is closing down")
         server.close()
         exit()
+
 
 start()

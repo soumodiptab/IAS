@@ -11,4 +11,4 @@ def zoo():
 
 
 def boo(par):
-    return par*2
+    print(par*2)

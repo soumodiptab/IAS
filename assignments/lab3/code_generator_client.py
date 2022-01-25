@@ -59,19 +59,20 @@ def function_builder(procedure):
     out_string = LINE_END+f"def {function_name}("
     for param in parameter_list:
         param_type = param["data_type"]
-        if param_type == "string":
-            param_type = "str"
         out_string = out_string+param["parameter_name"]+":"+param_type+","
     if len(parameter_list) > 0:
         out_string = out_string[:-1]
     out_string += "):"+LINE_END
-    out_string = out_string+INDENT + \
-        f"return {return_type}(rpc_connector('{function_name}',["
+    return_string = f"rpc_connector('{function_name}',["
     if len(parameter_list) == 0:
-        return out_string+"]))"+LINE_END+LINE_END
-    for param in parameter_list:
-        out_string = out_string+param["parameter_name"]+","
-    out_string = out_string[:-1]+"]))"+LINE_END+LINE_END
+        return_string += "])"
+    else:
+        for param in parameter_list:
+            return_string = return_string+param["parameter_name"]+","
+        return_string = return_string[:-1]+"])"
+    if return_type != "NoneType":
+        return_string = f"return {return_type}({return_string})"
+    out_string = out_string + INDENT + return_string + LINE_END+LINE_END
     return out_string
 
 
@@ -87,6 +88,7 @@ def start(file_name):
     f.close()
 
 
-if len(sys.argv) != 2:
-    exit()
-start(sys.argv[1])
+# if len(sys.argv) != 2:
+#     exit()
+# start(sys.argv[1])
+start("contract.json")

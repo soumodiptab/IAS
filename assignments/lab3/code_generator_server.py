@@ -63,7 +63,7 @@ def app_start_builder():
         server.listen()
         while True:
             conn, addr = server.accept()
-            new_thread = threading.Thread(target=rpc_handler, args=(conn, addr))
+            new_thread = threading.Thread(target=rpc_handler, args=(conn,))
             new_thread.start()
     except KeyboardInterrupt:
         print("RPC SERVER is closing down")
@@ -99,12 +99,22 @@ def caller_builder(procedures):
     return out_string
 
 
+def caller_generic():
+    out_string = '''def caller(func_dict):
+    fname = list(func_dict.keys())[0]
+    arguments = func_dict[fname]
+    function_call = f"{fname}(*{arguments})"
+    ret_value = eval(function_call)
+    return ret_value'''
+    return out_string
+
+
 def start(file_name):
     remote_procedures = json_loader(file_name)['remote_procedures']
     f = open(FILE_NAME, "w")
     f.write(import_generator())
     f.write(config_generator())
-    f.write(caller_builder(remote_procedures))
+    f.write(caller_generic())
     f.write(rpc_builder())
     f.write(app_start_builder())
     """for procedure in remote_procedures:
