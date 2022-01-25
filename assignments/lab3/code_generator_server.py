@@ -16,7 +16,7 @@ def json_loader(file):
     return data
 
 
-imports = ["socket", "ast", "threading"]
+imports = ["socket", "threading"]
 
 config = {
     "PORT": PORT,
@@ -42,9 +42,9 @@ def config_generator():
 
 
 def rpc_builder():
-    out_string = '''def rpc_handler(conn, addr):
+    out_string = '''def rpc_handler(conn):
     function_info = conn.recv(MAX_sIZE).decode()
-    func_dict = ast.literal_eval(function_info)
+    func_dict = eval(function_info)
     print("RPC REQUEST: ")
     print(func_dict)
     ret_value = caller(func_dict)
@@ -59,11 +59,16 @@ def app_start_builder():
     print("RPC SERVER has started")
     server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     server.bind(ADDRESS)
-    server.listen()
-    while True:
-        conn, addr = server.accept()
-        new_thread = threading.Thread(target=rpc_handler, args=(conn, addr))
-        new_thread.start()'''+LINE_END+LINE_END+"start()"+LINE_END
+    try:
+        server.listen()
+        while True:
+            conn, addr = server.accept()
+            new_thread = threading.Thread(target=rpc_handler, args=(conn, addr))
+            new_thread.start()
+    except KeyboardInterrupt:
+        print("RPC SERVER is closing down")
+        server.close()
+        exit()'''+LINE_END+LINE_END+"start()"+LINE_END
     return out_string
 
 

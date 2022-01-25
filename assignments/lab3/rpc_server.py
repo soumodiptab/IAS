@@ -1,5 +1,4 @@
 import socket
-import ast
 import threading
 from server_procedures import *
 
@@ -22,7 +21,7 @@ def caller(func_dict):
 	else:
 		return "Invalid"
 
-def rpc_handler(conn, addr):
+def rpc_handler(conn):
     function_info = conn.recv(MAX_sIZE).decode()
     func_dict = eval(function_info)
     print("RPC REQUEST: ")
@@ -36,9 +35,15 @@ def start():
     print("RPC SERVER has started")
     server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     server.bind(ADDRESS)
-    server.listen()
-    while True:
-        conn, addr = server.accept()
-        new_thread = threading.Thread(target=rpc_handler, args=(conn, addr))
-        new_thread.start()
+    try:
+        server.listen()
+        while True:
+            conn, addr = server.accept()
+            new_thread = threading.Thread(target=rpc_handler, args=(conn, addr))
+            new_thread.start()
+    except KeyboardInterrupt:
+        print("RPC SERVER is closing down")
+        server.close()
+        exit()
+
 start()
