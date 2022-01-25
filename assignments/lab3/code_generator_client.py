@@ -54,8 +54,6 @@ def function_builder(procedure):
     function_name = procedure["procedure_name"]
     parameter_list = procedure["parameters"]
     return_type = procedure["return_type"]
-    if return_type == "string":
-        return_type = "str"
     out_string = LINE_END+f"def {function_name}("
     for param in parameter_list:
         param_type = param["data_type"]
@@ -88,7 +86,7 @@ def start(file_name):
     f.close()
 
 
-# if len(sys.argv) != 2:
-#     exit()
-# start(sys.argv[1])
-start("contract.json")
+if len(sys.argv) != 2:
+    exit()
+start(sys.argv[1])
+# start("contract.json")

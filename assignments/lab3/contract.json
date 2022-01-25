@@ -8,7 +8,7 @@
                     "data_type": "int"
                 }
             ],
-            "return_type": "string"
+            "return_type": "str"
         },
         {
             "procedure_name": "bar",
@@ -27,7 +27,7 @@
         {
             "procedure_name": "zoo",
             "parameters": [],
-            "return_type": "string"
+            "return_type": "str"
         },
         {
             "procedure_name": "boo",
