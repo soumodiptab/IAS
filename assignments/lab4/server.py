@@ -9,20 +9,22 @@ def load_ai_files():
     global test_data
     global model
     global passengers
-    test_data = pd.read_csv('testing_data.csv')
-    passengers=pd.read_csv('passengers.csv')
+    test_data = pd.read_csv('testing_data.csv', index_col=[0])
+    passengers = pd.read_csv('passenger.csv', index_col=[0])
     pickle_in = open("model.pickle", "rb")
     model = pickle.load(pickle_in)
     pickle_in.close()
 
 
 def make_prediction(data):
-    global test_data
     global model
+    global test_data
     global passengers
-    query=test_data[passengers[]]
-    y_pred = model.predict(data)
-    return y_pred
+    indexes_to_search = list(
+        passengers.index[passengers['PassengerId'].isin(data)])
+    search_data = test_data.iloc[indexes_to_search]
+    search_pred = (model.predict(search_data))
+    return search_pred.tolist()
 
 
 @app.route('/predict', methods=['POST'])
