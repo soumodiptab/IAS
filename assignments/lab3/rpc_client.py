@@ -13,7 +13,7 @@ def rpc_connector(func_name, param_list):
 	return func_ret
 
 
-def foo(par_1:int):
+def foo(par_1:str):
 	return str(rpc_connector('foo',[par_1]))
 
 

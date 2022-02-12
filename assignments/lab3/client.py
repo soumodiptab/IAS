@@ -4,4 +4,4 @@ from rpc_client import *
 # print(bar(12, 13))
 # print(zoo())
 # foo("Helo")
-boo(12.4)
+print(foo("hello"))

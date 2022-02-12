@@ -1,4 +1,4 @@
-def foo(param):
+def foo(param:str):
     return f"This is a foo string {param}"
 
 
