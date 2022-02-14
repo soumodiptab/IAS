@@ -23,8 +23,7 @@ def request_prediction(query):
 def start():
     print('Specify single/Batch mode >>\n')
     print('1. Single - single passenger id input')
-    print('2. Batch - Read from csv file')
-    print('Input 1/2')
+    print('2. Batch - Read from csv file [specify file-name]')
     opt = int(input())
     query = []
     if opt == 1:
