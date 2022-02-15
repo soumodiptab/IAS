@@ -5,10 +5,14 @@ import pandas as pd
 
 
 def load_batch_data(file_name):
-    print("Implementation uses pandas, Please specify column name >>")
-    col_name = str(input())
-    df = pd.read_csv(file_name)
-    query = df[f'{col_name}'].tolist()
+    print('The name of the col. must be PassengerId in csv')
+    try:
+        df = pd.read_csv(file_name)
+        query = df['PassengerId'].tolist()
+    except:
+        print("Invalid data file, exiting")
+        exit(0)
+
     return query
 
 

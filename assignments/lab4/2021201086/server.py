@@ -16,14 +16,19 @@ def load_ai_files():
     pickle_in.close()
 
 
+def remove_pk(data):
+    new_data = data.loc[:, data.columns != 'PassengerId']
+    return new_data
+
+
 def make_prediction(data):
     global model
     global test_data
-    global passengers
-    indexes_to_search = list(
-        passengers.index[passengers['PassengerId'].isin(data)])
-    search_data = test_data.iloc[indexes_to_search]
-    search_pred = (model.predict(search_data))
+    #global passengers
+
+    search_data = test_data[test_data['PassengerId'].isin(data)]
+    #search_data = test_data.iloc[indexes_to_search]
+    search_pred = (model.predict(remove_pk(search_data)))
     return search_pred.tolist()
 
 
