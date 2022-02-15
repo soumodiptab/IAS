@@ -5,10 +5,14 @@ import pandas as pd
 
 
 def load_batch_data(file_name):
-    print("Implementation uses pandas, Please specify column name >>")
-    col_name = str(input())
-    df = pd.read_csv(file_name)
-    query = df[f'{col_name}'].tolist()
+    print('The name of the col. must be PassengerId in csv')
+    try:
+        df = pd.read_csv(file_name)
+        query = df['PassengerId'].tolist()
+    except:
+        print("Invalid data file, exiting")
+        exit(0)
+
     return query
 
 
@@ -23,7 +27,8 @@ def request_prediction(query):
 def start():
     print('Specify single/Batch mode >>\n')
     print('1. Single - single passenger id input')
-    print('2. Batch - Read from csv file [specify file-name]')
+    print('2. Batch - Read from csv file')
+    print('Input 1/2')
     opt = int(input())
     query = []
     if opt == 1:

@@ -5,18 +5,15 @@
 ├── mobileApp.py
 ├── model.ipynb
 ├── model.pickle (gen)
-├── passenger.csv (testing)
 ├── readme.md
 ├── server.py
 ├── test.csv (dataset file)
-├── testing_data.csv (gen)
 └── train.csv (dataset file)
 ```
 ### CSV file format
-* Single row with passenger id's
-* the first row must be col name with 'PassengerId'
+* should be same format as `test.csv`
 ### Instructions to run:
-1. Run `model.ipynb` to generate files `model.pickle`,`testing_data.csv` which is required by `server.py` to make the indexes possible for passenger id's.
+1. Run `model.ipynb` to generate files `model.pickle` which is required by `server.py` to make the predictions.
 2. Run `server.py` as a flask application
 3. Run `mobileApp.py`, operates in two modes
    1. in single mode any passenger id can be taken as input
