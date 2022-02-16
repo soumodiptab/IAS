@@ -5,7 +5,6 @@ import pandas as pd
 
 
 def load_batch_data(file_name):
-    print('The name of the col. must be PassengerId in csv')
     try:
         df = pd.read_csv(file_name)
         #query = df['PassengerId'].tolist()
