@@ -38,8 +38,11 @@ def start():
     query = load_batch_data(file_name)
     survive = request_prediction(query)
     #df = pd.DataFrame(zip(query, survive), columns=['Passenger Id', 'Survive'])
-    query['Survived']=survive
-    print(query[['PassengerId','Name','Survived']].to_string())
+    query['Survived'] = survive
+    # print(query[['PassengerId','Name','Survived']].to_string())
+    out = query['Survived'].tolist()
+    for i in out:
+        print(i)
 
 
 if (__name__ == '__main__'):

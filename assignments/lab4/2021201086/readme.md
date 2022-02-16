@@ -1,13 +1,11 @@
 # Assignment 4:
 ```bash
 .
-├── gender_submission.csv (dataset file) <--needed for accuracy testing
 ├── mobileApp.py
 ├── model.ipynb
 ├── model.pickle (gen)
 ├── readme.md
 ├── server.py
-├── test.csv (dataset file) <--needed for acccuracy testing
 └── train.csv (dataset file) <--needed for training
 ```
 ### CSV file format
