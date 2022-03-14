@@ -1,0 +1,10 @@
+{
+    "sensors_count":1,
+    "sensors_instances":
+    [
+        {
+            "index":0,
+            "type":"TEMP"
+        }
+    ]
+}

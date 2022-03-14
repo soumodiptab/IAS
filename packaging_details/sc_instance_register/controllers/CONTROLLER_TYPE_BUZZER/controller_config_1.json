@@ -1,0 +1,13 @@
+{
+    "controller_type": "SENSOR_TYPE_LIGHT",
+    "controller_loc": {
+        "ip": "10.18.109.63",
+        "port": "8000"
+    },
+    "geo_location": {
+        "room_id": "120",
+        "house_id": "D",
+        "street_id": "RANDOM",
+        "city_id": "HYD"
+    }
+}

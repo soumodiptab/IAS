@@ -1,0 +1,9 @@
+{
+    "models":
+    [
+        {
+            "index": 0,
+            "api_name":"/predict"
+        }
+    ]
+}

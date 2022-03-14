@@ -1,0 +1,9 @@
+{
+    "app_id":"SD1233",
+            "geo_loc": {
+                "room_id": "120",
+                "house_id": "D",
+                "street_id": "RANDOM",
+                "city_id": "HYD"
+            }
+}

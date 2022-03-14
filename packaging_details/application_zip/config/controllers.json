@@ -1,0 +1,18 @@
+{
+    "controller_count":3,
+    "controller_instances":
+    [
+        {
+            "index":0,
+            "type":"AC"
+        },
+        {
+            "index":1,
+            "type":"BUZZER"
+        },
+        {
+            "index":2,
+            "type":"BUZZER"
+        }
+    ]
+}

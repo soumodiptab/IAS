@@ -1,0 +1,13 @@
+{
+    "sensor_type": "SENSOR_TYPE_LIGHT",
+    "sensor_loc": {
+        "ip": "10.18.109.63",
+        "port": "8001"
+    },
+    "geo_location": {
+        "room_no": "0",
+        "house_no": "0",
+        "street": "UNK",
+        "city": "HYD"
+    }
+}

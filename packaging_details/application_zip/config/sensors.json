@@ -1,0 +1,18 @@
+{
+    "sensors_count":3,
+    "sensors_instances":
+    [
+        {
+            "index":0,
+            "type":"TEMP"
+        },
+        {
+            "index":1,
+            "type":"LIGHT"
+        },
+        {
+            "index":2,
+            "type":"TEMP"
+        }
+    ]
+}
