@@ -1,5 +1,15 @@
 {
-    "app_name":"Fire Prevention",
-    "description":"This app monitors detects true fire and raises alarm",
-    "main":"app.py"
+    "app_name": "Fire Prevention",
+    "description": "This app monitors detects true fire and raises alarm",
+    "sys_args": "2",
+    "args": [
+        {
+            "type": "int",
+            "description": "Selects algo from 3 algo's"
+        },
+        {
+            "type": "int",
+            "argument2": "speed"
+        }
+    ]
 }

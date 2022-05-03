@@ -1,0 +1,12 @@
+{
+    "device": "CONTROLLER",
+    "type": "TEMP",
+    "ip_loc": {
+        "ip": "10.18.109.63",
+        "port": "8000"
+    },
+    "geo_location": {
+        "street": "RANDOM",
+        "city": "HYD"
+    }
+}

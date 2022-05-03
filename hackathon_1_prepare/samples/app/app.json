@@ -1,5 +1,0 @@
-{
-    "app_name": "Fire Prevention",
-    "description": "This app monitors detects true fire and raises alarm",
-    "main": "app.py"
-}

@@ -1,0 +1,5 @@
+{
+    "python.analysis.extraPaths": [
+        "./packaging_details/application_zip/app/main"
+    ]
+}

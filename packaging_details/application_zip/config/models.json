@@ -3,11 +3,11 @@
     [
         {
             "index": 0,
-            "api_name":"/model1"
+            "model_id":"M1"
         },
         {
             "index": 1,
-            "api_name":"/model2"
+            "model_id":"M2"
         }
     ]
 }
