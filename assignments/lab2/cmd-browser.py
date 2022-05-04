@@ -67,7 +67,11 @@ def start_browser():
         conn = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         if parsed_url.scheme == "https":
             conn, TARGET_PORT = ssl_wrapper(conn)
-        conn.connect((parsed_url.hostname, TARGET_PORT))
+        try:
+            conn.connect((parsed_url.hostname, TARGET_PORT))
+        except:
+            print('Incorrect url')
+            continue
         request_handler(conn, parsed_url)
         response = response_handler(conn)
         status_code = response.split('\r\n')[0].split(' ')[1]
